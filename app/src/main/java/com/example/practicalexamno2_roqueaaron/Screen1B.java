@@ -18,22 +18,22 @@ public class Screen1B extends AppCompatActivity {
 
     private static final String fileName = "subjects.txt";
     private static final String comment = "comment.txt";
-    TextView editText6;
+    TextView TextView;
     TextView editText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen1_b);
         TextView = findViewById(R.id.TextView);
-        TextView = findViewById(R.id.editText);
+        editText = findViewById(R.id.editText);
 
 
 
-        FileInputStream fis = null;
+        FileInputStream cat = null;
 
         try {
-            fis = openFileInput(fileName);
-            InputStreamReader isr = new InputStreamReader(fis);
+            cat = openFileInput(fileName);
+            InputStreamReader isr = new InputStreamReader(cat);
             BufferedReader br = new BufferedReader(isr);
             StringBuilder sb = new StringBuilder();
             String text;
@@ -43,7 +43,7 @@ public class Screen1B extends AppCompatActivity {
                 sb.append(text).append("\n");
             }
 
-            textView6.setText(sb.toString());
+            TextView.setText(sb.toString());
 
 
         } catch (FileNotFoundException e) {
@@ -51,17 +51,17 @@ public class Screen1B extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (fis != null) {
+            if (cat != null) {
                 try {
-                    fis.close();
+                    cat.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }
         try {
-            fis = openFileInput(comment);
-            InputStreamReader isr = new InputStreamReader(fis);
+            cat = openFileInput(comment);
+            InputStreamReader isr = new InputStreamReader(cat);
             BufferedReader br = new BufferedReader(isr);
             StringBuilder sb = new StringBuilder();
             String text;
@@ -71,7 +71,7 @@ public class Screen1B extends AppCompatActivity {
                 sb.append(text).append("\n");
             }
 
-            t7.setText(sb.toString());
+            editText.setText(sb.toString());
 
 
         } catch (FileNotFoundException e) {
@@ -79,21 +79,21 @@ public class Screen1B extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (fis != null) {
+            if (cat != null) {
                 try {
-                    fis.close();
+                    cat.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }
     }
-    public void buttonPrevious(View view)
+    public void Previous(View view)
     {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-    public void buttonSend(View view)
+    public void Send(View view)
     {
         Toast.makeText(this, "Registration Sent... " , Toast.LENGTH_LONG).show();
     }
